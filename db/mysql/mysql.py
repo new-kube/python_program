@@ -10,6 +10,8 @@ def _connect(host, port, user, passwd, db):
     conn.select_db(db)
     return conn
 
+# 注意，查询，不需要 conn.commit(), 增删改都需要conn.commit(), 才能保证事务的提交。
+
 def _execute(conn, sql):
     cur = conn.cursor()
     # execute() 仅仅返回影响的行数。
